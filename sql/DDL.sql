@@ -54,7 +54,7 @@ CREATE TABLE Campionati(
     id integer unsigned auto_increment not null,
     nome varchar(30) not null,
     genere char(1) not null,
-    anno integer unsigned not null,
+    anno char(9) not null,
 
     primary key(id)
 )ENGINE=InnoDB;

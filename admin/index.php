@@ -41,11 +41,10 @@
     if($_SESSION['logged'] == true){ // se sono loggato mostro il gestionale con menu.
         //echo('Admin: '.$_SESSION['idAdmin']." ".$_SESSION['cognome']." ".$_SESSION['nome']);
         writeMenu();
-
         // << your code start here >>
             echo('<div class="alert alert-success">Autenticazione avvenuta con successo.</div>');
-        // << end fo your code >>
 
+        // << end of your code >>
     }
     else{
         // non sono loggato quindi mostro il form per eventuale login

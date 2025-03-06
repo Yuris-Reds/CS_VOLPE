@@ -35,7 +35,7 @@ function writeMenu(){
     echo('
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">HOME</a>
+                <a class="navbar-brand" href="#"><img src="../IT-CONI.png" width="15%"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -43,11 +43,11 @@ function writeMenu(){
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                PRODOTTO
+                                CAMPIONATI
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="prodotto.php?scelta=formNuovoProdotto">Add Prodotto</a></li>
-                                <li><a class="dropdown-item" href="prodotto.php?scelta=listaProdotto">List Prodotto</a></li>
+                                <li><a class="dropdown-item" href="campionati.php?scelta=formNuovoCampionato">Nuovo campionato</a></li>
+                                <li><a class="dropdown-item" href="campionati.php?scelta=listaCampionati">Visualizza</a></li>
                             </ul>
                         </li>
 

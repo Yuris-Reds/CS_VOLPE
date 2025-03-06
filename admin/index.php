@@ -16,7 +16,7 @@ if($sc == "login"){
 
     $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
     $sql = "SELECT * FROM dirigenti, presidenti WHERE cf = '$u' AND password='".md5($p)."'";
-    //echo($sql);
+    
     $resultSet = $db->query($sql);
     $db->close();
 
@@ -27,17 +27,12 @@ if($sc == "login"){
         $_SESSION['cognome'] = $record['cognome'];
         $_SESSION['nome'] = $record['nome'];
     }
-    $_SESSION['logged'] = true;
-    $_SESSION['idAdmin'] = 1;
-    $_SESSION['cognome'] = 'Pradel';
-    $_SESSION['nome'] = 'Cescoz';
-    /*
     if($u == "admin" && $p=="admin"){
         $_SESSION['logged'] = true;
     }
     else{
         echo('<div class="alert alert-warning">Credenziali non valide</div>');
-    }*/
+    }
 }
 if($sc == "logout"){
     $_SESSION['logged'] = false;
@@ -58,9 +53,9 @@ else{
     echo('
         <form action="index.php">
             <div class="mb-3">
-                <label for="inputUsername" class="form-label">Username:</label>
+                <label for="inputUsername" class="form-label">Codice Fiscale:</label>
                 <input type="text" name="username" class="form-control form-control-sm" id="inputUsername" aria-describedby="descrizioneHelp">
-                <label for="inputPassword" class="form-label">Username:</label>
+                <label for="inputPassword" class="form-label">Password:</label>
                 <input type="password" name="password" class="form-control form-control-sm" id="inputPassword" aria-describedby="descrizioneHelp">
            </div>
                 <input type="hidden" name="scelta" value="login">

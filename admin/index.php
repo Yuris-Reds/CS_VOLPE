@@ -13,7 +13,6 @@ writeHeader();
 if($sc == "login"){
     $u = $_REQUEST['username'];
     $p = $_REQUEST['password'];
-
     $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
     $sql = "SELECT * FROM admin WHERE username = '$u' AND password ='".md5($p)."'";
     

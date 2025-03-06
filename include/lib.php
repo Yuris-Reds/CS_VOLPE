@@ -2,7 +2,7 @@
 
 $DBHOST = "localhost";
 $DBUSER = "root";
-$DBPASSWORD = "root";
+$DBPASSWORD = "YES";
 $DBNAME = "cs_volpe";
 
 function writeHeader(){

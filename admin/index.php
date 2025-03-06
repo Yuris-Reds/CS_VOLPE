@@ -15,7 +15,7 @@ if($sc == "login"){
     $p = $_REQUEST['password'];
 
     $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
-    $sql = "SELECT * FROM dirigenti, presidenti WHERE cf = '$u' AND password='".md5($p)."'";
+    $sql = "SELECT * FROM admin WHERE username = '$u' AND password ='".md5($p)."'";
     
     $resultSet = $db->query($sql);
     $db->close();
@@ -53,7 +53,7 @@ else{
     echo('
         <form action="index.php">
             <div class="mb-3">
-                <label for="inputUsername" class="form-label">Codice Fiscale:</label>
+                <label for="inputUsername" class="form-label">Username:</label>
                 <input type="text" name="username" class="form-control form-control-sm" id="inputUsername" aria-describedby="descrizioneHelp">
                 <label for="inputPassword" class="form-label">Password:</label>
                 <input type="password" name="password" class="form-control form-control-sm" id="inputPassword" aria-describedby="descrizioneHelp">

@@ -2,6 +2,7 @@ CREATE TABLE Presidenti(
     cf char(16) not null,
     nome varchar(25) not null,
     cognome varchar(25) not null,
+    password char(32),
 
     primary key(cf)
 )ENGINE=InnoDB;
@@ -33,6 +34,7 @@ CREATE TABLE Dirigenti(
     nome varchar(20) not null,
     cognome varchar(20) not null,
     id_societa integer unsigned,
+    password char(32),
     
     primary key(cf),
     foreign key(id_societa) references Societa(id)

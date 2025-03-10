@@ -47,7 +47,14 @@ function writeMenu(){
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="campionati.php?scelta=formNuovoCampionato">Nuovo campionato</a></li>
-                                <li><a class="dropdown-item" href="campionati.php?scelta=listaCampionati">Visualizza</a></li>
+                                <div class="btn-group dropend">
+                                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Visualizza
+                                    </button>
+                                <ul class="dropdown-menu">
+                                    <!-- Dropdown menu links -->
+                                </ul>
+                            </div>
                             </ul>
                         </li>
 

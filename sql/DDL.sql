@@ -72,8 +72,8 @@ CREATE TABLE Atleti(
 
 CREATE TABLE Admin(
     id integer unsigned auto_increment,
-    username varchar(15) not null,
-    password char(32),
+    username varchar(25) not null,
+    password char(32) not null,
 
     primary key(id)
 )ENGINE=InnoDB;

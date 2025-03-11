@@ -57,3 +57,6 @@ VALUES('AAAAAAAAAAAAAAA1', 'Maurizio', 'Sarri', '1');
 --Admin
 INSERT INTO Admin(username, password)
 VALUES('admin1@00', MD5("qwerty1"));
+
+INSERT INTO Admin(username, password)
+VALUES('yuri.rossi@galilei', MD5("carlitostevez2015"));

@@ -2,7 +2,7 @@
 
 $DBHOST = "localhost";
 $DBUSER = "root";
-$DBPASSWORD = "root";
+$DBPASSWORD = "";
 $DBNAME = "cs_volpe";
 
 function writeHeader(){
@@ -47,14 +47,7 @@ function writeMenu(){
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="campionati.php?scelta=formNuovoCampionato">Nuovo campionato</a></li>
-                                <div class="btn-group dropend">
-                                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Visualizza
-                                    </button>
-                                <ul class="dropdown-menu">
-                                    <!-- Dropdown menu links -->
-                                </ul>
-                            </div>
+                                <li><a class="dropdown-item" href="campionati.php?scelta=lista">Visualizza</a></li>
                             </ul>
                         </li>
 

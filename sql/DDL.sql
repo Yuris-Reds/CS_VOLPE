@@ -42,7 +42,7 @@ CREATE TABLE Dirigenti(
 CREATE TABLE Squadre(
     id integer unsigned auto_increment not null,
     nome varchar(20) not null,
-    id_campionato integer unsigned not null,
+    id_campionato integer unsigned,
     id_societa integer unsigned not null,
 
     primary key(id),

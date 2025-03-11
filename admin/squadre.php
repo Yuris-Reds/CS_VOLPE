@@ -56,12 +56,12 @@
 
         switch($sc){
             case "formNuovaSquadra": {
-                echo("aggiungere form")
+                echo("aggiungere form");
                 break;
             }
 
             case "listaSquadra": {
-                echo("aggiungere listaSquadra")
+                echo("aggiungere listaSquadra");
                 break;
             }
         }

@@ -98,21 +98,21 @@ function writeMenu(){
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                MAGAZZINO
+                                SQUADRE
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="magazzino.php?scelta=formNuovoMagazzino">Add Magazzino</a></li>
-                                <li><a class="dropdown-item" href="magazzino.php?scelta=listaMagazzino">List Magazzino</a></li>
+                                <li><a class="dropdown-item" href="squadre.php?scelta=formNuovaSquadra">Nuova squadra</a></li>
+                                <li><a class="dropdown-item" href="squadre.php?scelta=listaSquadra">Visualizza</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                ACQUISTO
+                                ATLETI
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="acquisto.php?scelta=formNuovoAcquisto">Add Acquisto</a></li>
-                                <li><a class="dropdown-item" href="acquisto.php?scelta=listaAcquisto">List Acquisto</a></li>
+                                <li><a class="dropdown-item" href="atleti.php?scelta=formNuoviAtleti">Nuovo/a atleta</a></li>
+                                <li><a class="dropdown-item" href="atleti.php?scelta=listaAtleti">Visualizza</a></li>
                             </ul>
                         </li>
                     </ul>

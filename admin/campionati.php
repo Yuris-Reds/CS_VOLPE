@@ -107,13 +107,13 @@
                             <input type="text" class="form-control" id="annoCampionato" name="annoCampionato" pattern="^\d{4}-\d{4}$" maxlength="9" required>
                         </div>
                         <button type="submit" class="btn btn-success">Aggiungi Campionato</button>
-                        <a href="campionati.php?scelta=lista" class="btn btn-secondary">Indietro</a>
+                        <a href="campionati.php?scelta=listaCampionati" class="btn btn-secondary">Indietro</a>
                     </form>
                 ');
                 break;
             }
 
-            case "lista": {
+            case "listaCampionati": {
                 $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
                 $sql = "SELECT * FROM Campionati";
                 $resultSet = $db->query($sql);
@@ -164,12 +164,51 @@
                 $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
                 $sql = "DELETE FROM campionati WHERE campionati.id = '$idC'";
                 $resultSet = $db->query($sql);
-                if($resultSet){
+                if($db->query($sql)){
                     echo('<div class="alert alert-success">Campionato eliminato con successo.</div>');
                 }
                 else{
                     echo('<div class="alert alert-warning">Errore in fase di eliminazione.</div>');
                 }
+                break;
+            }
+            case "vediCampionato": {
+                $idC = $_REQUEST['idCampionato'];
+                $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
+                $sql = "SELECT id, nome FROM squadre s WHERE s.id_Campionato = '$idC'";
+                $resultSet = $db->query($sql);
+                echo('
+                    <p class="h1" style="text-align: center; font-weight: bold">Serie A Enilive</p>
+                    <table class="table table-striped table-hover ">
+                    <caption>Lista delle squadre</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                ');
+                while($record = $resultSet->fetch_assoc()){
+                    echo('<tr>
+                            <th scope="row">'.$record['id'].'</th>
+                            <td>'.$record['nome'].'</td>
+                            <td>
+                                <a href="atleti.php?scelta=vediAtleti&idSquadra='.$record['id'].'">
+                                    <button type="button" class="btn btn-primary">Visualizza</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="campionati.php?scelta=cancellaSquadra&idSquadra='.$record['id'].'">
+                                    <button type="button" class="btn btn-primary">Cancella</button>
+                                </a>
+                            </td>
+                        </tr>
+                    ');  
+                }
+                echo('</tbody>
+                </table>');
+                $db->close();
                 break;
             }
         }

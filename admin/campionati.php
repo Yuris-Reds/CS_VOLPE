@@ -159,6 +159,19 @@
                 $db->close();
                 break;
             }
+            case "cancellaCampionato": {
+                $idC = $_REQUEST['idCampionato'];
+                $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
+                $sql = "DELETE FROM campionati WHERE campionati.id = '$idC'";
+                $resultSet = $db->query($sql);
+                if($resultSet){
+                    echo('<div class="alert alert-success">Campionato eliminato con successo.</div>');
+                }
+                else{
+                    echo('<div class="alert alert-warning">Errore in fase di eliminazione.</div>');
+                }
+                break;
+            }
         }
     }
 

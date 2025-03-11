@@ -12,13 +12,13 @@
 
         switch($sc){
             case "formNuovoCampionato": {
-			if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nomeCampionato"], $_POST["annoCampionato"])) {
-				$nomeCampionato = trim($_POST["nomeCampionato"]);
-				$genereCampionato = "M"; // Fisso su Maschile
-				$annoCampionato = trim($_POST["annoCampionato"]);
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nomeCampionato"], $_POST["genereCampionato"], $_POST["annoCampionato"])) {
+        $nomeCampionato = trim($_POST["nomeCampionato"]);
+        $genereCampionato = $_POST["genereCampionato"]; // Ora può essere "M" o "F"
+        $annoCampionato = trim($_POST["annoCampionato"]);
 
-			if (!empty($nomeCampionato) && preg_match('/^\d{4}-\d{4}$/', $annoCampionato)) {
-				$db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
+        if (!empty($nomeCampionato) && ($genereCampionato == "M" || $genereCampionato == "F") && preg_match('/^\d{4}-\d{4}$/', $annoCampionato)) {
+            $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
 
             if ($db->connect_error) {
                 die("Connessione fallita: " . $db->connect_error);
@@ -56,10 +56,10 @@
             </div>
             <div class="mb-3">
                 <label for="genereCampionato" class="form-label">Genere:</label>
-                <select class="form-select" id="genereCampionato" name="genereCampionato" disabled>
+                <select class="form-select" id="genereCampionato" name="genereCampionato" required>
                     <option value="M" selected>Maschile</option>
+                    <option value="F">Femminile</option>
                 </select>
-                <input type="hidden" name="genereCampionato" value="M">
             </div>
             <div class="mb-3">
                 <label for="annoCampionato" class="form-label">Anno (formato xxxx-yyyy):</label>
@@ -71,6 +71,52 @@
     ');
     break;
 }
+
+case "lista": {
+    $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
+    $sql = "SELECT * FROM Campionati";
+    $resultSet = $db->query($sql);
+
+    echo('<table class="table table-striped table-hover">
+        <caption>Lista dei Campionati</caption>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Genere</th>
+            </tr>
+        </thead>
+        <tbody>
+    ');
+    
+    while ($record = $resultSet->fetch_assoc()) {
+        $color = ($record['genere'] == 'M') ? '#007bff' : '#ff69b4'; // Blu per M, Rosa per F
+        $pallino = '<span style="display:inline-block; width:10px; height:10px; background-color:'.$color.'; border-radius:50%; margin-right:5px;"></span>';
+        
+        echo('<tr>
+                <th scope="row">'.$record['id'].'</th>
+                <td>'.$pallino.$record['nome'].'</td>
+                <td>'.$record['genere'].'</td>
+                <td>
+                    <a href="campionati.php?scelta=vediCampionato&idCampionato='.$record['id'].'">
+                        <button type="button" class="btn btn-primary">Visualizza</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="campionati.php?scelta=cancellaCampionato&idCampionato='.$record['id'].'">
+                        <button type="button" class="btn btn-primary">Cancella</button>
+                    </a>
+                </td>
+            </tr>
+        ');  
+    }
+
+    echo('</tbody>
+    </table>');
+    $db->close();
+    break;
+}
+
 
 
 

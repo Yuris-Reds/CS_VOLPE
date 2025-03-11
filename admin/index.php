@@ -14,24 +14,31 @@
         $u = $_REQUEST['username'];
         $p = $_REQUEST['password'];
         $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
-        $sql = "SELECT * FROM admin WHERE username = '$u' AND password ='".md5($p)."'";
+        $sql = "SELECT * FROM admin";
         
         $resultSet = $db->query($sql);
+        
         $db->close();
 
-        if($resultSet->num_rows == 1){
-            $record = $resultSet->fetch_assoc();
-            $_SESSION['logged'] = true;
-            $_SESSION['idAdmin'] = $record['id'];
-            //$_SESSION['cognome'] = $record['cognome'];
-            //$_SESSION['nome'] = $record['nome'];
+        while($record = $resultSet->fetch_assoc()){
+            if($u == $record['username'] && md5($p) == $record['password']){
+                $_SESSION['logged'] = true;
+                $_SESSION['idAdmin'] = $record['id'];
+                // break;
+            }
+            // else{
+            //     echo('<div class="alert alert-warning">Credenziali non valide</div>');
+            // }
         }
-        // if($u == "admin" && $p=="admin"){
+
+        // if($resultSet->num_rows == 1){
+        //     $record = $resultSet->fetch_assoc();
         //     $_SESSION['logged'] = true;
+        //     $_SESSION['idAdmin'] = $record['id'];
+        //     //$_SESSION['cognome'] = $record['cognome'];
+        //     //$_SESSION['nome'] = $record['nome'];
         // }
-        // else{
-        //     echo('<div class="alert alert-warning">Credenziali non valide</div>');
-        // }
+        
     }
     if($sc == "logout"){
         $_SESSION['logged'] = false;

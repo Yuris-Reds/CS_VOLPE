@@ -134,6 +134,10 @@
                 $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
                 $sql = "SELECT id, nome FROM squadre s WHERE s.id_Campionato = '$idC'";
                 $resultSet = $db->query($sql);
+
+
+
+                
                 echo('
                     <p class="h1" style="text-align: center; font-weight: bold">Serie A Enilive</p>
                     <table class="table table-dark table-striped table-hover ">
@@ -146,6 +150,10 @@
                             </thead>
                             <tbody> 
                 ');
+
+// <p class="h1" style="text-align: center; font-weight: bold">'.$nome.'</p> --> trovare il modo (tramite query??) di far comparire il nome del campionato come titolo
+
+
                 while($record = $resultSet->fetch_assoc()){
                     echo('<tr>
                             <th scope="row">'.$record['id'].'</th>

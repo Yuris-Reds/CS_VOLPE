@@ -12,9 +12,9 @@
         switch($sc){
             case "formNuovoCampionato": {
                 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nomeCampionato"], $_POST["genereCampionato"], $_POST["annoCampionato"])) {
-                    $nomeCampionato = trim($_POST["nomeCampionato"]);
+                    $nomeCampionato = $_POST["nomeCampionato"];
                     $genereCampionato = $_POST["genereCampionato"];
-                    $annoCampionato = trim($_POST["annoCampionato"]);
+                    $annoCampionato = $_POST["annoCampionato"];
 
                     if (!empty($nomeCampionato) && ($genereCampionato == "M" || $genereCampionato == "F") && preg_match('/^\d{4}-\d{4}$/', $annoCampionato)) {
                         $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);

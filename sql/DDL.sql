@@ -64,7 +64,7 @@ CREATE TABLE Atleti(
     nome varchar(20) not null,
     cognome varchar(20) not null,
     dataNascita date not null,
-    id_squadra integer unsigned not null,
+    id_squadra integer unsigned,
 
     primary key(matricola),
     foreign key(id_squadra) references Squadre(id)

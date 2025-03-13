@@ -2,6 +2,12 @@
     session_start();
     if(!isset($_SESSION['logged'])) $_SESSION['logged'] = false;
     if(!isset($_REQUEST['scelta'])) $sc = null; else $sc = $_REQUEST['scelta'];
+	
+	if(!isset($_SESSION['logged'])) $_SESSION['logged'] = false;
+    if(!isset($_REQUEST['scelta'])) $sc = null; else $sc = $_REQUEST['scelta'];
+	
+	if(!isset($_SESSION['GuestLogged'])) $_SESSION['GuestLogged'] = false;
+    if(!isset($_REQUEST['scelta'])) $sc = null; else $sc = $_REQUEST['scelta'];
 
     // includo la libreria con funzioni necessarie all'interfaccia.
     require('../include/lib.php');
@@ -37,6 +43,14 @@
         $_SESSION['logged'] = false;
         session_destroy();
     }
+	
+	if($sc == "guest"){
+        $_SESSION['GuestLogged'] = true;
+		writeMenu();
+		require('../guest/campionatiGuest.php');
+		echo('<div class="alert alert-success">Autenticazione come GUEST avvenuta con successo.</div>');
+    }
+
 
     if($_SESSION['logged'] == true){ // se sono loggato mostro il gestionale con menu.
         //echo('Admin: '.$_SESSION['idAdmin']." ".$_SESSION['cognome']." ".$_SESSION['nome']);
@@ -59,7 +73,15 @@
             </div>
                     <input type="hidden" name="scelta" value="login">
                     <button type="submit" class="btn btn-primary">Submit</button>
-            </form>');
+					<br /><br />
+					
+            </form>
+			
+			<form action="indexGuest.php" method="get"  >
+                    <button type="submit" class="btn btn-success" name="scelta" value="guest">Accedi come guest</button>
+										
+            </form>'
+			);
     }
     // richiamo la funzione per la creazione della sezione finale delle pagine.
 

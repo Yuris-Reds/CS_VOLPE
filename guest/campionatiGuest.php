@@ -92,6 +92,13 @@
                 $db->close();
                 break;
             }
+            default: {
+                echo('
+                    <div>
+                        <p class="h5" style="text-align: center; font-weight: bold; padding: 20px;">Benvenuti nel sistema di navigazione dei campionati CONI</p>
+                    </div>
+                ');
+            }
         }
     
 

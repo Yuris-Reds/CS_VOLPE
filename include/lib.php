@@ -20,7 +20,7 @@ function writeHeader(){
                             background-color: #121212;
                             color: #e0e0e0;
                         }
-                        .container {
+                        .container{
                             background-color: #1e1e1e;
                             padding: 20px;
                             border-radius: 10px;
@@ -129,10 +129,13 @@ function writeMenu($x){
                             <ul class="dropdown-menu">
                             ');
                             if($x == 'a'){
-                                echo('<li><a class="dropdown-item" href="atleti.php?scelta=formNuoviAtleti">Nuovo/a atleta</a></li>');
+                                echo('<li><a class="dropdown-item" href="atleti.php?scelta=formNuoviAtleti">Nuovo/a atleta</a></li>
+                               <li><a class="dropdown-item" href="atleti.php?scelta=listaAtleti">Visualizza</a></li>');
                             }
-                            echo('
-                                <li><a class="dropdown-item" href="atleti.php?scelta=listaAtleti">Visualizza</a></li>
+                            else{
+                                echo('<li><a class="dropdown-item" href="atletiGuest.php?scelta=vediTuttiAtleti">Visualizza</a></li>');
+                            }
+                                echo('
                             </ul>
                         </li>
                     </ul>

@@ -44,6 +44,38 @@
             $db->close();
             break;
         }
+        case 'vediTuttiAtleti': {
+            $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
+            $sql = "SELECT * FROM Atleti";
+            $resultSet = $db->query($sql);
+            echo('
+                <p class="h1" style="text-align: center; font-weight: bold">Atleti</p>
+                <table class="table table-dark table-striped table-hover ">
+                    <caption>Lista degli atleti</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Cognome</th>
+                                <th scope="col">Data di Nascita</th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+            ');
+            while($record = $resultSet->fetch_assoc()){
+                echo('
+                    <tr>
+                        <th scope="row">'.$record['matricola'].'</th>
+                        <td>'.$record['nome'].'</td>
+                        <td>'.$record['cognome'].'</td>
+                        <td>'.$record['dataNascita'].'</td>
+                    </tr>
+                ');  
+            }
+            $db->close();
+            break;
+        }
+
     }
     
 

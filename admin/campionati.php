@@ -135,11 +135,6 @@
                 $sql = "SELECT nome FROM campionati c WHERE c.id = '$idC'";
                 $resultSet = $db->query($sql);
                 $record = $resultSet->fetch_assoc();
-
-                // $record = $resultSet->fetch_assoc() + 1;
-                // $nome = $record['nome'];
-                // while($record = $resultSet->fetch_assoc()){
-                // }
                 echo('
                     <p class="h1" style="text-align: center; font-weight: bold">'.$record['nome'].'</p>
                     <table class="table table-dark table-striped table-hover ">
@@ -148,14 +143,13 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nome</th>
+                                    <th scope="col">Azioni</th>
                                 </tr>
                             </thead>
                             <tbody> 
                 ');
-
-// <p class="h1" style="text-align: center; font-weight: bold">'.$nome.'</p> --> trovare il modo (tramite query??) di far comparire il nome del campionato come titolo
-
-
+                $sql = "SELECT id, nome FROM squadre s WHERE s.id_Campionato = '$idC'";
+                $resultSet = $db->query($sql);
                 while($record = $resultSet->fetch_assoc()){
                     echo('<tr>
                             <th scope="row">'.$record['id'].'</th>
@@ -164,10 +158,8 @@
                                 <a href="atleti.php?scelta=vediAtleti&idSquadra='.$record['id'].'">
                                     <button type="button" class="btn btn-primary">Visualizza</button>
                                 </a>
-                            </td>
-                            <td>
                                 <a href="campionati.php?scelta=cancellaSquadra&idSquadra='.$record['id'].'">
-                                    <button type="button" class="btn btn-primary">Cancella</button>
+                                    <button type="button" class="btn btn-danger">Cancella</button>
                                 </a>
                             </td>
                         </tr>

@@ -40,7 +40,7 @@
                             <td>'.$record['genere'].'</td>
                             <td>'.$record['anno'].'</td>
                             <td>
-                                <a href="campionati.php?scelta=vediCampionato&idCampionato='.$record['id'].'">
+                                <a href="campionatiGuest.php?scelta=vediCampionato&idCampionato='.$record['id'].'">
                                     <button type="button" class="btn btn-primary">Visualizza</button>
                                 </a>
                                 </a>
@@ -57,32 +57,31 @@
             case "vediCampionato": {
                 $idC = $_REQUEST['idCampionato'];
                 $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
+                $sql = "SELECT nome FROM campionati c WHERE c.id = '$idC'";
+                $resultSet = $db->query($sql);
+                $record = $resultSet->fetch_assoc();
+                echo('
+                    <p class="h1" style="text-align: center; font-weight: bold">'.$record['nome'].'</p>
+                    <table class="table table-dark table-striped table-hover ">
+                        <caption>Lista delle squadre</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Azioni</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                ');
                 $sql = "SELECT id, nome FROM squadre s WHERE s.id_Campionato = '$idC'";
                 $resultSet = $db->query($sql);
-                echo('
-                    <p class="h1" style="text-align: center; font-weight: bold">'.$resultSet['nome'].'</p>
-                    <table class="table table-striped table-hover ">
-                    <caption>Lista delle squadre</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nome</th>
-                        </tr>
-                    </thead>
-                    <tbody> 
-                ');
                 while($record = $resultSet->fetch_assoc()){
                     echo('<tr>
                             <th scope="row">'.$record['id'].'</th>
                             <td>'.$record['nome'].'</td>
                             <td>
-                                <a href="atleti.php?scelta=vediAtleti&idSquadra='.$record['id'].'">
+                                <a href="atletiGuest.php?scelta=vediAtleti&idSquadra='.$record['id'].'">
                                     <button type="button" class="btn btn-primary">Visualizza</button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="campionati.php?scelta=cancellaSquadra&idSquadra='.$record['id'].'">
-                                    <button type="button" class="btn btn-primary">Cancella</button>
                                 </a>
                             </td>
                         </tr>

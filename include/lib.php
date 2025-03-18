@@ -78,7 +78,14 @@ function writeMenu($x){
     echo('
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.php"><img src="../IT-CONI.png" width="30px"></a>
+            ');
+            if($x == 'a'){
+                echo('<a class="navbar-brand" href="index.php"><img src="../IT-CONI.png" width="30px"></a>');
+            }
+            else{
+                echo('<a class="navbar-brand" href="campionatiGuest.php"><img src="../IT-CONI.png" width="30px"></a>');
+            }
+            echo('
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -91,10 +98,13 @@ function writeMenu($x){
                             <ul class="dropdown-menu">
                             ');
                             if($x == 'a'){
-                                echo('<li><a class="dropdown-item" href="campionati.php?scelta=formNuovoCampionato">Nuovo campionato</a></li>');
+                                echo('<li><a class="dropdown-item" href="campionati.php?scelta=formNuovoCampionato">Nuovo campionato</a></li>
+                                <li><a class="dropdown-item" href="campionati.php?scelta=listaCampionati">Visualizza</a></li>');
+                            }
+                            else{
+                                echo('<li><a class="dropdown-item" href="../guest/campionatiGuest.php?scelta=listaCampionati">Visualizza</a></li>');
                             }
                                 echo('
-                                <li><a class="dropdown-item" href="campionati.php?scelta=listaCampionati">Visualizza</a></li>
                             </ul>
                         </li>
 

@@ -120,7 +120,7 @@
                 $sql = "UPDATE squadre SET id_campionato = null WHERE id_campionato = '$idC'"; 
                 $db->query($sql);
                 $sql = "DELETE FROM campionati WHERE campionati.id = '$idC'";
-                $resultSet = $db->query($sql);
+                $db->query($sql);
                 if($db->query($sql)){
                     echo('<div class="alert alert-success">Campionato eliminato con successo.</div>');
                 }
@@ -132,14 +132,16 @@
             case "vediCampionato": {
                 $idC = $_REQUEST['idCampionato'];
                 $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
-                $sql = "SELECT id, nome FROM squadre s WHERE s.id_Campionato = '$idC'";
+                $sql = "SELECT nome FROM campionati c WHERE c.id = '$idC'";
                 $resultSet = $db->query($sql);
+                $record = $resultSet->fetch_assoc();
 
-
-
-                
+                // $record = $resultSet->fetch_assoc() + 1;
+                // $nome = $record['nome'];
+                // while($record = $resultSet->fetch_assoc()){
+                // }
                 echo('
-                    <p class="h1" style="text-align: center; font-weight: bold">Serie A Enilive</p>
+                    <p class="h1" style="text-align: center; font-weight: bold">'.$record['nome'].'</p>
                     <table class="table table-dark table-striped table-hover ">
                         <caption>Lista delle squadre</caption>
                             <thead>

@@ -8,54 +8,7 @@
 
         writeMenu(0);
 
-        echo('
-            <style>
-                body {
-                    background-color: #121212;
-                    color: #e0e0e0;
-                }
-                .container {
-                    background-color: #1e1e1e;
-                    padding: 20px;
-                    border-radius: 10px;
-                    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-                }
-                .form-control, .form-select {
-                    background-color: #2a2a2a;
-                    color: white;
-                    border: 1px solid #444;
-                }
-                .form-control::placeholder {
-                    color: #bbb;
-                }
-                .btn-success {
-                    background-color: #388e3c;
-                    border-color: #388e3c;
-                }
-                .btn-primary {
-                    background-color: #1976d2;
-                    border-color: #1976d2;
-                }
-                .btn-danger {
-                    background-color: #d32f2f;
-                    border-color: #d32f2f;
-                }
-                .table-dark {
-                    background-color: #1e1e1e;
-                    color: #e0e0e0;
-                }
-                .blue-dot {
-                    color: #00aaff;
-                }
-                .pink-dot {
-                    color: #ff69b4;
-                }
-            </style>
-        ');
-
         switch($sc){
-
-
             case "listaCampionati": {
                 $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
                 $sql = "SELECT * FROM Campionati";
@@ -90,8 +43,6 @@
                                 <a href="campionati.php?scelta=vediCampionato&idCampionato='.$record['id'].'">
                                     <button type="button" class="btn btn-primary">Visualizza</button>
                                 </a>
-                                <a href="campionati.php?scelta=cancellaCampionato&idCampionato='.$record['id'].'">
-                                    <button type="button" class="btn btn-danger">Cancella</button>
                                 </a>
                             </td>
                         </tr>');  
@@ -108,12 +59,8 @@
                 $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
                 $sql = "SELECT id, nome FROM squadre s WHERE s.id_Campionato = '$idC'";
                 $resultSet = $db->query($sql);
-
-
-
-                
                 echo('
-                    <p class="h1" style="text-align: center; font-weight: bold">Serie A Enilive</p>
+                    <p class="h1" style="text-align: center; font-weight: bold">'.$resultSet['nome'].'</p>
                     <table class="table table-striped table-hover ">
                     <caption>Lista delle squadre</caption>
                     <thead>
@@ -124,10 +71,6 @@
                     </thead>
                     <tbody> 
                 ');
-
-// <p class="h1" style="text-align: center; font-weight: bold">'.$nome.'</p> --> trovare il modo (tramite query??) di far comparire il nome del campionato come titolo
-
-
                 while($record = $resultSet->fetch_assoc()){
                     echo('<tr>
                             <th scope="row">'.$record['id'].'</th>

@@ -54,7 +54,7 @@
 
     if($_SESSION['logged'] == true){ // se sono loggato mostro il gestionale con menu.
         //echo('Admin: '.$_SESSION['idAdmin']." ".$_SESSION['cognome']." ".$_SESSION['nome']);
-        writeMenu();
+        writeMenu('a');
         // << your code start here >>
 		
             echo('<div class="alert alert-success">Autenticazione avvenuta con successo.</div>');
@@ -77,7 +77,7 @@
 					
             </form>
 			
-			<form action="../guest/indexGuest.php" method="get"  >
+			<form action="../guest/campionatiGuest.php" method="get"  >
                     <button type="submit" class="btn btn-success" name="scelta" value="guest">Accedi come guest</button>
 										
             </form>'

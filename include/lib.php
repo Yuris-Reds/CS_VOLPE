@@ -2,7 +2,7 @@
 
 $DBHOST = "localhost";
 $DBUSER = "root";
-$DBPASSWORD = ""; //!
+$DBPASSWORD = "root"; //!
 $DBNAME = "cs_volpe";
 
 function writeHeader(){
@@ -74,7 +74,7 @@ function writeFooter(){
     return;
 }
 
-function writeMenu(){
+function writeMenu($x){
     echo('
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -89,7 +89,11 @@ function writeMenu(){
                                 CAMPIONATI
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="campionati.php?scelta=formNuovoCampionato">Nuovo campionato</a></li>
+                            ');
+                            if($x == 'a'){
+                                echo('<li><a class="dropdown-item" href="campionati.php?scelta=formNuovoCampionato">Nuovo campionato</a></li>');
+                            }
+                                echo('
                                 <li><a class="dropdown-item" href="campionati.php?scelta=listaCampionati">Visualizza</a></li>
                             </ul>
                         </li>
@@ -99,7 +103,11 @@ function writeMenu(){
                                 SQUADRE
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="squadre.php?scelta=formNuovaSquadra">Nuova squadra</a></li>
+                            ');
+                            if($x == 'a'){
+                                echo('<li><a class="dropdown-item" href="squadre.php?scelta=formNuovaSquadra">Nuova squadra</a></li>');
+                            }
+                                echo('
                                 <li><a class="dropdown-item" href="squadre.php?scelta=listaSquadra">Visualizza</a></li>
                             </ul>
                         </li>
@@ -109,16 +117,27 @@ function writeMenu(){
                                 ATLETI
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="atleti.php?scelta=formNuoviAtleti">Nuovo/a atleta</a></li>
+                            ');
+                            if($x == 'a'){
+                                echo('<li><a class="dropdown-item" href="atleti.php?scelta=formNuoviAtleti">Nuovo/a atleta</a></li>');
+                            }
+                            echo('
                                 <li><a class="dropdown-item" href="atleti.php?scelta=listaAtleti">Visualizza</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-                <a class="navbar-brand" href="index.php?scelta=logout">Esci</a>
+                ');
+                if($x == 'a'){
+                    echo('<a class="navbar-brand" href="index.php?scelta=logout">Esci</a>');
+                }
+                else{
+                    echo('<a class="navbar-brand" href="../admin/index.php?scelta=logout">Esci</a>');
+                }
+                echo('
             </div>
         </nav>    
-    '); //*/
+    ');
 
     return;
 }

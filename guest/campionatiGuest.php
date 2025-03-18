@@ -6,7 +6,7 @@
 
     if(isset($_REQUEST["scelta"])) $sc = $_REQUEST["scelta"]; else $sc = null;
 
-        writeMenu();
+        writeMenu(0);
 
         echo('
             <style>

@@ -7,7 +7,7 @@
     if(isset($_REQUEST["scelta"])) $sc = $_REQUEST["scelta"]; else $sc = null;
 
     if($_SESSION["logged"]){
-        writeMenu();
+        writeMenu('a');
 
         switch($sc){
             case "formNuovoCampionato": {
@@ -31,7 +31,7 @@
                             echo '<div class="alert alert-warning">Il campionato esiste già.</div>';
                         } else {
                             $sqlInsert = "INSERT INTO Campionati (nome, genere, anno) VALUES ('$nomeCampionato', '$genereCampionato', '$annoCampionato')";
-                            if ($db->query($sqlInsert) === TRUE) {
+                            if ($db->query($sqlInsert) == TRUE) {
                                 echo '<div class="alert alert-success">Campionato aggiunto con successo!</div>';
                             } else {
                                 echo '<div class="alert alert-danger">Errore: ' . $db->error . '</div>';

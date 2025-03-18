@@ -7,7 +7,7 @@
     if(isset($_REQUEST["scelta"])) $sc = $_REQUEST["scelta"]; else $sc = null;
 
     if($_SESSION["logged"]){
-        writeMenu();
+        writeMenu(0);
 
         echo('
             <style>

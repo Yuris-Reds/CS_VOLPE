@@ -18,7 +18,7 @@
                     $db = new mysqli($DBHOST, $DBUSER, $DBPASSWORD, $DBNAME);
                     $sql = "INSERT INTO Squadre(nome, id_campionato) VALUES ('$nomeSquadra', '$campionato')";
                     if ($db->query($sql) == TRUE) {
-                        echo '<div class="alert alert-success">Campionato aggiunto con successo!</div>';
+                        echo '<div class="alert alert-success">Squadra aggiunta con successo!</div>';
                     } 
                     else {
                         echo '<div class="alert alert-danger">Errore: ' . $db->error . '</div>';
@@ -79,7 +79,7 @@
                                 <td>'.$record['nome'].'</td>
                                 <td>'.$record['id_campionato'].'</td>
                                 <td>
-                                    <a href="atletiGuest.php?scelta=vediAtleti&idSquadra='.$record['id'].'">
+                                    <a href="atleti.php?scelta=vediAtleti&idSquadra='.$record['id'].'">
                                         <button type="button" class="btn btn-primary">Visualizza</button>
                                     </a>
                                 </td>

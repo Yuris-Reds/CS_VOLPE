@@ -2,7 +2,7 @@
 
 $DBHOST = "localhost";
 $DBUSER = "root";
-$DBPASSWORD = "root"; //!
+$DBPASSWORD = ""; //!
 $DBNAME = "cs_volpe";
 
 function writeHeader(){
@@ -136,7 +136,7 @@ function writeMenu($x){
                             ');
                             if($x == 'a'){
                                 echo('<li><a class="dropdown-item" href="atleti.php?scelta=formNuoviAtleti">Nuovo/a atleta</a></li>
-                               <li><a class="dropdown-item" href="atleti.php?scelta=listaAtleti">Visualizza</a></li>');
+                               <li><a class="dropdown-item" href="atleti.php?scelta=vediTuttiAtleti">Visualizza</a></li>');
                             }
                             else{
                                 echo('<li><a class="dropdown-item" href="atletiGuest.php?scelta=vediTuttiAtleti">Visualizza</a></li>');

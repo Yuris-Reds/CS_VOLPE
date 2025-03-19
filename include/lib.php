@@ -115,10 +115,16 @@ function writeMenu($x){
                             <ul class="dropdown-menu">
                             ');
                             if($x == 'a'){
-                                echo('<li><a class="dropdown-item" href="squadre.php?scelta=formNuovaSquadra">Nuova squadra</a></li>');
+                                echo('<li><a class="dropdown-item" href="squadre.php?scelta=formNuovaSquadra">Nuova squadra</a></li>
+                                <li><a class="dropdown-item" href="squadre.php?scelta=listaSquadra">Visualizza</a></li>
+                                ');
                             }
+                            else{
                                 echo('
-                                <li><a class="dropdown-item" href="../guest/squadreGuest.php?scelta=listaSquadra">Visualizza</a></li>
+                                    <li><a class="dropdown-item" href="../guest/squadreGuest.php?scelta=listaSquadra">Visualizza</a></li>
+                                ');
+                            }
+                            echo('
                             </ul>
                         </li>
 

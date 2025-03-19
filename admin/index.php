@@ -30,7 +30,7 @@
 	
 	if($sc == "guest"){
         $_SESSION['GuestLogged'] = true;
-		writeMenu();
+		writeMenu(0);
 		require('../guest/campionatiGuest.php');
 		echo('<div class="alert alert-success">Autenticazione come GUEST avvenuta con successo.</div>');
     }
